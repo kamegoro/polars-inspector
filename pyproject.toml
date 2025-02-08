@@ -1,3 +1,6 @@
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
 [project]
 name = "polars-inspector"
 version = "0.1.0"
@@ -5,8 +8,13 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "polars>=1.21.0",
+]
+
+[dependency-groups]
+dev = [
     "black>=25.1.0",
     "ipykernel>=6.29.5",
-    "polars>=1.21.0",
+    "pytest>=8.3.4",
     "ruff>=0.9.5",
 ]
