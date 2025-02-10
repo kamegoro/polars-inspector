@@ -6,4 +6,6 @@ class Executer:
         self.clean_dataframe_domain = clean_dataframe_domain
 
     def process(self) -> None:
-        return self.clean_dataframe_domain.exec()
+        result = self.clean_dataframe_domain.exec()
+
+        result.write_csv("result.csv")
