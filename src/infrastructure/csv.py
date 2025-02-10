@@ -1,6 +1,7 @@
 import polars as pl
 from port.csv import CsvPort
 
+
 class Csv(CsvPort):
     def __init__(self, file_path: str):
         self.file_path = file_path
