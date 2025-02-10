@@ -1,11 +1,9 @@
-from infrastructure.file_reader import read_csv
-from domain.services import clean_dataframe
-from domain.aggregations import group_and_sum
-import polars as pl
+from domain.services import CleanDataframe
 
 
-def process(file_path: str) -> pl.DataFrame:
-    df = read_csv(file_path)
-    df = clean_dataframe(df)
+class Executer:
+    def __init__(self, clean_dataframe_domain: CleanDataframe):
+        self.clean_dataframe_domain = clean_dataframe_domain
 
-    return df
+    def process(self) -> None:
+        return self.clean_dataframe_domain.exec()
