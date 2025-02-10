@@ -1,29 +1,16 @@
-import polars as pl
-from unittest.mock import patch
-from usecase.precess_data import process
+from unittest.mock import patch, Mock
+from domain.services import CleanDataframe
+from domain.models import Dataframe
+from usecase.precess_data import Executer
 
 
-@patch("usecase.precess_data.clean_dataframe")
-@patch("usecase.precess_data.read_csv")
-def test_読み込んだデータのクリーンアップと集計(mock_read_csv, mock_clean_dataframe):
-    mock_read_csv.return_value = pl.DataFrame(
-        {
-            "name": [" Alice", " boB  "],
-        }
-    )
+def test_読み込んだデータのクリーンアップと集計():
+    mock_clean_dataframe = Mock(spec=CleanDataframe)
+    mock_clean_dataframe.exec.return_value = Dataframe({"name": ["ALICE", "BOB"]})
+    cleanExecuter = Executer(mock_clean_dataframe)
 
-    mock_clean_dataframe.return_value = pl.DataFrame(
-        {
-            "name": ["ALICE", "BOB"],
-        }
-    )
+    actual = cleanExecuter.process()
 
-    actual = process("test.csv")
-
-    expected = pl.DataFrame(
-        {
-            "name": ["ALICE", "BOB"],
-        }
-    )
+    expected = Dataframe({"name": ["ALICE", "BOB"]})
 
     assert actual.equals(expected)
