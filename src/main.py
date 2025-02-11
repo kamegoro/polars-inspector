@@ -9,3 +9,6 @@ def exec():
     cleanExecuter = Executer(cleanDataframeDomain)
 
     cleanExecuter.process()
+
+if __name__ == "__main__":
+    exec()
