@@ -1,8 +1,8 @@
 format:
-	ruff format .
+	uvx --with-requirements pyproject.toml ruff format .
 
 lint:
-	ruff check . --fix
+	uvx --with-requirements pyproject.toml ruff check . --fix
 
 test:
 	uvx --with-requirements pyproject.toml pytest tests
