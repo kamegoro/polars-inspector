@@ -1,13 +1,13 @@
-from port.csv import CsvPort
-from domain.models import Dataframe
-from domain.services import CleanDataframe
-import polars as pl
+from domain.dataframe import Dataframe
 
 
-def csvFormatAndOrderedByDate(csvPort: CsvPort):
-    cleanDataframeDomain = CleanDataframe(csvPort)
+def csvFormatAndOrderedByDate() -> None:
+    dataframe = Dataframe.read("../target.csv")
 
-    result = Dataframe(pl.read_csv("target.csv"))
-    cleanDataframeDomain.exec(result)
+    dataframe = Dataframe.clean(dataframe)
 
-    None
+    dataframe = Dataframe.sortByDate(dataframe)
+
+    dataframe.write(dataframe, "../result.csv")
+
+    return None
