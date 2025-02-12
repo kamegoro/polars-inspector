@@ -1,5 +1,5 @@
 import polars as pl
-from domain.models import Dataframe
+from domain.dataframe import Dataframe
 from domain.services import CleanDataframe
 from infrastructure.csv import Csv
 from unittest.mock import Mock

@@ -1,6 +1,6 @@
 from unittest.mock import patch, Mock
 from domain.services import CleanDataframe
-from domain.models import Dataframe
+from domain.dataframe import Dataframe
 from usecase.precess_data import Executer
 
 

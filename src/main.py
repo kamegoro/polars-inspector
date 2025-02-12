@@ -1,14 +1,12 @@
 from infrastructure.csv import Csv
-from domain.services import CleanDataframe
-from usecase.precess_data import Executer
+from usecase.csv_format_and_ordered_by_date import csvFormatAndOrderedByDate
 
 
 def exec():
-    csvInfrastructure = Csv("target.csv")
-    cleanDataframeDomain = CleanDataframe(csvInfrastructure)
-    cleanExecuter = Executer(cleanDataframeDomain)
+    csvInfrascture = Csv(target_file="target.csv")
 
-    cleanExecuter.process()
+    csvFormatAndOrderedByDate(csvInfrascture)
+
 
 if __name__ == "__main__":
     exec()

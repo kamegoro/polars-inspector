@@ -8,4 +8,6 @@ class Executer:
     def process(self) -> None:
         result = self.clean_dataframe_domain.exec()
 
-        result.write_csv("result.csv")
+        result.write_csv(
+            "result.csv"
+        )  # 別にここで書き出す必要はないが、テストのために書いている 後で別に関数を作ってテストする

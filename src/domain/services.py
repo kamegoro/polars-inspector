@@ -1,6 +1,6 @@
 import polars as pl
 from port.csv import CsvPort
-from domain.models import Dataframe
+from domain.dataframe import Dataframe
 
 
 class CleanDataframe:
